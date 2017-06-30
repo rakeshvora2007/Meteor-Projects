@@ -1,0 +1,40 @@
+<template name="header">
+  <nav role="navigation" class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand bigger" href="/home"><b>Ramtoo</b></a>
+      </div>
+      <div class="collapse navbar-collapse" id="main-nav">
+        <ul class="nav navbar-nav">
+          <li class="active">
+            <a href="/">Matches</a>
+          </li>
+          {{#if isInRole 'admin'}}
+          <li>
+            <a href="/admin">Admin</a>
+          </li>
+          {{/if}}
+          <li>
+            <a href="/profile">Results</a>
+          </li>
+          <li>
+            <a href="/cart"><i class="fa fa-trophy" aria-hidden="true"></i> Hall of Fame</a>
+          </li>
+        </ul>
+        {{#if currentUser}}
+            <div class="navbar-right plain">
+              <a href="/signout" class="btn btn-danger navbar-btn">
+                <img src = "{{currentUser.profile.avatar}}" alt="Avatar" class="img img-circle" width="20px"/>
+                 Sign out {{currentUser.profile.firstname}} {{currentUser.profile.lastname}}</a>
+            </div>
+          {{else}}
+            <div class="navbar-right plain">
+              <a href="/signin" class="btn btn-default navbar-btn">Sign In</a>
+              <a href="/register" class="btn btn-primary navbar-btn">Register</a>
+
+            </div>
+          {{/if}}
+      </div>
+    </div><!-- /.container-fluid -->
+  </nav>
+</template>
